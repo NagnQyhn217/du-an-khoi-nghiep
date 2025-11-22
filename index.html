@@ -1,141 +1,312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<title>Value Proposition Canvas</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
-        padding: 20px;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Value Proposition Canvas — English Path</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --accent:#2b6cb0;
+      --muted:#6b7280;
+      --danger:#ef4444;
+      --shadow: 0 6px 18px rgba(18, 38, 63, 0.08);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
-    .container {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        align-items: flex-start;
+    html,body{height:100%; margin:0; background:var(--bg); color:#0f172a}
+    .wrap{
+      max-width:1200px;
+      margin:28px auto;
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:20px;
+      align-items:start;
     }
-    .box {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        width: 420px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+    /* Left: Value Map (square) */
+    .box{
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      min-height:720px;
+      position:relative;
+      overflow:auto;
     }
-    .title {
-        font-size: 20px;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 10px;
-        text-transform: uppercase;
+
+    h1{
+      margin:0 0 8px 0;
+      font-size:18px;
+      color:var(--accent);
     }
-    .section-title {
-        font-weight: bold;
-        font-size: 16px;
-        margin-top: 15px;
-        color: #333;
+    .subtitle{font-size:13px;color:var(--muted); margin-bottom:12px}
+
+    /* Grid inside each main box */
+    .grid-3{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
     }
-    svg {
-        width: 100%;
-        margin-bottom: 20px;
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,1), rgba(250,250,252,1));
+      border-radius:10px;
+      padding:12px;
+      border:1px solid rgba(15,23,42,0.06);
+      min-height:110px;
     }
-</style>
+    .card h3{margin:0; font-size:13px; color:#063c6b}
+    .card ul{margin:8px 0 0 18px; padding:0; color: #111827; font-size:13px}
+    .card li{margin-bottom:6px; line-height:1.35}
+    .price-pill{display:inline-block; margin-top:6px; font-weight:600; color:#083b66; background:#e6f2ff; padding:6px 8px; border-radius:999px; font-size:13px}
+
+    /* Right: Customer Profile — circular layout mimic */
+    .customer{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .circle-wrap{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .circle {
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background: radial-gradient(circle at 20% 20%, #ffffff 0%, #f3f7ff 40%, #eef5ff 100%);
+      border:1px solid rgba(11,63,110,0.06);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      flex: 0 0 360px;
+    }
+    .circle h2{
+      margin:0 0 6px 0; font-size:16px; color:var(--accent)
+    }
+    .circle .sect{
+      margin-top:6px;
+      border-radius:8px;
+      padding:8px;
+      background:rgba(255,255,255,0.7);
+      border:1px dashed rgba(11,63,110,0.06);
+    }
+    .sect h4{margin:0 0 6px 0; font-size:13px; color:#12487a}
+    .sect ul{margin:0 0 0 14px; font-size:13px; color:#15233a}
+    /* Right column extra: list of pains/gains/jobs in stacked cards */
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      flex:1;
+      min-height:360px;
+    }
+
+    .stack .panel{
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      border-radius:10px; padding:12px; border:1px solid rgba(15,23,42,0.06);
+    }
+    .panel h3{margin:0 0 6px 0; font-size:14px; color:#0f172a}
+    .panel ul{margin:0 0 0 14px; font-size:13px; color:#111827}
+
+    /* footer / legend */
+    .legend{
+      margin-top:12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .wrap{grid-template-columns:1fr; padding:12px}
+      .circle{width:300px;height:300px}
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <!-- LEFT: Value Map -->
+    <div class="box" aria-label="Value Map — Products, Pain Relievers, Gain Creators">
+      <h1>BẢN ĐỒ GIÁ TRỊ (Value Map)</h1>
+      <div class="subtitle">Sản phẩm & dịch vụ, thuốc giảm đau (Pain Relievers) và nhà tạo lợi ích (Gain Creators)</div>
 
-<h2 style="text-align:center;">Value Proposition Canvas – English Path</h2>
+      <div class="grid-3" role="region" aria-label="Products Services / Pain Relievers / Gain Creators">
+        <!-- Products & Services -->
+        <div class="card" id="products">
+          <h3>SẢN PHẨM & DỊCH VỤ</h3>
+          <ul>
+            <li>Ứng dụng di động với lộ trình học cá nhân hóa bằng AI.</li>
+            <li>Hệ thống học tập game hóa (Nhân vật, Nhiệm vụ, Guild, Đấu trường).</li>
+            <li>Các lớp học offline / hybrid với mentor.</li>
+            <li>Sự kiện "English Zone" và workshop thực tế.</li>
+            <li>Hệ thống học tập vi mô (Micro-learning).</li>
+          </ul>
+        </div>
 
-<div class="container">
+        <!-- Pain Relievers -->
+        <div class="card" id="pain-relievers">
+          <h3>THUỐC GIẢM ĐAU (Pain Relievers)</h3>
+          <ul>
+            <li><strong>Kết quả:</strong> Cam kết đầu ra bằng số (TOEIC 450-550); Lộ trình AI cá nhân chống "học không tiến bộ".</li>
+            <li><strong>Quá trình:</strong> Game hóa xóa tan nhàm chán; Học nhóm (Guild) giảm sợ giao tiếp; Học tập vi mô phù hợp lịch bận.</li>
+            <li><strong>Chi phí:</strong> Gói Premium 59.000 VNĐ/tháng.</li>
+          </ul>
+        </div>
 
-    <!-- LEFT SIDE: CUSTOMER PROFILE -->
-    <div class="box">
-        <div class="title">Customer Profile</div>
+        <!-- Gain Creators -->
+        <div class="card" id="gain-creators">
+          <h3>NHÀ TẠO LỢI ÍCH (Gain Creators)</h3>
+          <ul>
+            <li>Lộ trình rõ ràng và cam kết bằng số → đảm bảo đạt mục tiêu.</li>
+            <li>Trải nghiệm "vừa học vừa chơi" → hiệu quả và thú vị.</li>
+            <li>Kết nối doanh nghiệp và cơ hội nghề nghiệp; Xây dựng sự tự tin qua cộng đồng.</li>
+          </ul>
+        </div>
+      </div>
 
-        <!-- SVG Circle Diagram -->
-        <svg viewBox="0 0 300 300">
-            <!-- Outer Circle -->
-            <circle cx="150" cy="150" r="130" fill="#e8f3ff" stroke="#1e88e5" stroke-width="3"/>
-            
-            <!-- Dividing lines -->
-            <line x1="20" y1="150" x2="280" y2="150" stroke="#1e88e5" stroke-width="2"/>
-            <line x1="150" y1="20" x2="150" y2="280" stroke="#1e88e5" stroke-width="2"/>
+      <div style="margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+        <div class="price-pill">Gói Premium: 59.000₫ / tháng</div>
+        <div style="font-size:13px;color:var(--muted)">Cam kết đầu ra: TOEIC 450–550</div>
+      </div>
 
-            <!-- Labels -->
-            <text x="150" y="40" text-anchor="middle" font-size="16" fill="#1e88e5">Gains</text>
-            <text x="150" y="290" text-anchor="middle" font-size="16" fill="#1e88e5">Pains</text>
-            <text x="25" y="160" font-size="16" fill="#1e88e5">Jobs</text>
-        </svg>
-
-        <div class="section-title">1. Customer Jobs</div>
-        <ul>
-            <li>Vượt chuẩn đầu ra TOEIC/IELTS</li>
-            <li>Giao tiếp tốt trong CLB & sự kiện</li>
-            <li>Tìm động lực học lâu dài</li>
-        </ul>
-
-        <div class="section-title">2. Pains</div>
-        <ul>
-            <li>Sợ trượt kỳ thi, học mãi không tiến bộ</li>
-            <li>Phương pháp nhàm chán, thiếu môi trường nói</li>
-            <li>Chi phí khóa học cao</li>
-        </ul>
-
-        <div class="section-title">3. Gains</div>
-        <ul>
-            <li>Đạt chuẩn đầu ra chắc chắn</li>
-            <li>Học phí hợp lý, lộ trình rõ ràng</li>
-            <li>Học vui hơn, tự tin hơn, có cơ hội nghề nghiệp</li>
-        </ul>
+      <!-- small reference image (uploaded by user) -->
+      <div style="margin-top:14px; display:flex; gap:12px; align-items:center;">
+        <img alt="reference" src="/mnt/data/8251800d-b4f4-48e0-92be-73a9df4e9233.png"
+             style="width:86px;height:86px;border-radius:10px;border:1px solid rgba(11,63,110,0.06)">
+        <div style="font-size:13px;color:var(--muted)">Hình gốc bạn gửi (tham khảo).</div>
+      </div>
     </div>
 
-    <!-- RIGHT SIDE: VALUE MAP -->
-    <div class="box">
-        <div class="title">Value Map</div>
+    <!-- RIGHT: Customer Profile -->
+    <div class="box customer" aria-label="Customer Profile">
+      <h1>HỒ SƠ KHÁCH HÀNG (Customer Profile)</h1>
+      <div class="subtitle">Jobs / Pains / Gains</div>
 
-        <!-- SVG Square Diagram -->
-        <svg viewBox="0 0 300 300">
-            <!-- Outer Square -->
-            <rect x="20" y="20" width="260" height="260" fill="#fff3e0" stroke="#fb8c00" stroke-width="3" rx="10" />
+      <div class="circle-wrap">
+        <!-- big circle summarizing -->
+        <div class="circle" role="img" aria-label="Customer Segment Circle">
+          <h2>Customer Profile</h2>
 
-            <!-- Divider lines -->
-            <line x1="150" y1="20" x2="150" y2="280" stroke="#fb8c00" stroke-width="2"/>
-            <line x1="20" y1="150" x2="280" y2="150" stroke="#fb8c00" stroke-width="2"/>
+          <div class="sect" style="margin-top:6px">
+            <h4>1. CÔNG VIỆC & NHIỆM VỤ (Customer Jobs)</h4>
+            <ul>
+              <li><strong>Chức năng:</strong> Vượt qua bài kiểm tra đầu vào; đạt chuẩn đầu ra TOEIC/IELTS; học và ghi nhớ từ vựng, ngữ pháp hiệu quả.</li>
+              <li><strong>Xã hội:</strong> Giao tiếp tự tin tại CLB/sự kiện; kết nối bạn bè quốc tế; không cảm thấy "lạc lõng".</li>
+              <li><strong>Cảm xúc:</strong> Tìm động lực học bền vững; vượt qua trì hoãn; xây dựng tự tin.</li>
+            </ul>
+          </div>
 
-            <!-- Labels -->
-            <text x="70" y="40" text-anchor="middle" font-size="16" fill="#fb8c00">Products</text>
-            <text x="225" y="40" text-anchor="middle" font-size="16" fill="#fb8c00">Pain</text>
-            <text x="225" y="60" text-anchor="middle" font-size="16" fill="#fb8c00">Relievers</text>
-            <text x="70" y="170" text-anchor="middle" font-size="16" fill="#fb8c00">Gain Creators</text>
-        </svg>
+          <div class="sect" style="margin-top:10px">
+            <h4>2. NỖI ĐAU (Pains)</h4>
+            <ul>
+              <li><strong>Kết quả:</strong> Sợ trượt, chậm tốt nghiệp; học nhiều không tiến bộ.</li>
+              <li><strong>Quá trình:</strong> Phương pháp nhàm chán; ngại giao tiếp; không có môi trường thực hành; lịch học dày.</li>
+              <li><strong>Chi phí:</strong> Khóa chất lượng thường đắt, lo sợ "tiền mất tật mang".</li>
+            </ul>
+          </div>
 
-        <div class="section-title">1. Products & Services</div>
-        <ul>
-            <li>Ứng dụng học cá nhân hóa bằng AI</li>
-            <li>Game hóa học tập</li>
-            <li>Lớp offline/hybrid với mentor</li>
-            <li>Sự kiện English Zone</li>
-            <li>Micro-learning</li>
-        </ul>
+          <div class="sect" style="margin-top:10px">
+            <h4>3. LỢI ÍCH MONG ĐỢI (Gains)</h4>
+            <ul>
+              <li><strong>Tối thiểu:</strong> Đạt điểm chuẩn đầu ra; có lộ trình học rõ ràng.</li>
+              <li><strong>Kỳ vọng:</strong> Cải thiện giao tiếp nhanh; học phí phải chăng; học linh hoạt.</li>
+              <li><strong>Mơ ước:</strong> Học vui; có việc tốt, cơ hội quốc tế; tự tin & chuyên nghiệp.</li>
+            </ul>
+          </div>
+        </div>
 
-        <div class="section-title">2. Pain Relievers</div>
-        <ul>
-            <li>Cam kết đầu ra → giảm lo trượt</li>
-            <li>Game hóa → hết nhàm chán</li>
-            <li>Guild → giảm sợ giao tiếp</li>
-            <li>Micro-learning → phù hợp lịch bận</li>
-            <li>Gói 59.000đ/tháng → giảm chi phí</li>
-        </ul>
+        <!-- stacked detailed panels -->
+        <div class="stack" style="flex:1">
+          <div class="panel">
+            <h3>Công việc & Nhiệm vụ — tóm tắt</h3>
+            <ul>
+              <li>Chuẩn bị để vượt các kỳ thi đầu vào/đầu ra, cải thiện từ vựng & ngữ pháp.</li>
+              <li>Xây dựng kỹ năng giao tiếp thực tế và tự tin trong môi trường xã hội.</li>
+            </ul>
+          </div>
 
-        <div class="section-title">3. Gain Creators</div>
-        <ul>
-            <li>Lộ trình rõ ràng → đạt mục tiêu</li>
-            <li>Học vui như chơi game</li>
-            <li>Kết nối doanh nghiệp & nghề nghiệp</li>
-            <li>Tăng sự tự tin qua cộng đồng</li>
-        </ul>
+          <div class="panel">
+            <h3>Nỗi đau — điểm cần giải quyết</h3>
+            <ul>
+              <li>Phương pháp học thiếu hiệu quả, không có môi trường thực hành.</li>
+              <li>Lo ngại chi phí và rủi ro khi chọn khóa học.</li>
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>Lợi ích mong đợi & Mơ ước</h3>
+            <ul>
+              <li>Lộ trình rõ ràng, học phí hợp lý, trải nghiệm học thú vị, kết nối nghề nghiệp.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend">
+        Bản đồ trên đã ghép nội dung bạn gửi vào các ô của Value Proposition Canvas theo cấu trúc chuẩn.
+      </div>
     </div>
+  </div>
 
-</div>
+  <!-- small JS: allow copying JSON content or export -->
+  <script>
+    // Structured data object (so bạn có thể copy / extend nhanh)
+    const vpcData = {
+      customerProfile: {
+        jobs: {
+          functional: "Vượt qua bài kiểm tra đầu vào, đạt chuẩn đầu ra TOEIC/IELTS; Học và ghi nhớ từ vựng, ngữ pháp hiệu quả.",
+          social: "Giao tiếp tự tin trong câu lạc bộ, sự kiện; kết nối với bạn bè quốc tế; không cảm thấy 'lạc lõng'.",
+          emotional: "Tìm kiếm động lực học bền vững, vượt qua sự trì hoãn; xây dựng sự tự tin."
+        },
+        pains: {
+          outcomes: "Sợ trượt kỳ thi, chậm tốt nghiệp; học nhiều không tiến bộ, 'học trước quên sau'.",
+          process: "Phương pháp học nhàm chán; ngại giao tiếp; không có môi trường thực hành; lịch học dày đặc.",
+          cost: "Khóa học chất lượng thường đắt; lo sợ 'tiền mất tật mang'."
+        },
+        gains: {
+          minimum: "Đạt điểm chuẩn đầu ra chắc chắn; có lộ trình học rõ ràng.",
+          expected: "Cải thiện giao tiếp nhanh; học phí phải chăng; học linh hoạt.",
+          dream: "Học tiếng Anh vui vẻ; cơ hội nghề nghiệp quốc tế; tự tin và chuyên nghiệp."
+        }
+      },
+      valueMap: {
+        products: [
+          "Ứng dụng di động với lộ trình học cá nhân hóa bằng AI",
+          "Game hóa (Nhân vật, Nhiệm vụ, Guild, Đấu trường)",
+          "Lớp học offline/hybrid với mentor",
+          "Sự kiện 'English Zone' và workshop",
+          "Micro-learning"
+        ],
+        painRelievers: [
+          "Cam kết đầu ra bằng số (TOEIC 450-550)",
+          "Lộ trình AI cá nhân chống 'học không tiến bộ'",
+          "Game hóa, Học nhóm, Micro-learning",
+          "Gói Premium 59.000 VNĐ/tháng"
+        ],
+        gainCreators: [
+          "Lộ trình rõ ràng và cam kết",
+          "Trải nghiệm vừa học vừa chơi",
+          "Kết nối doanh nghiệp và cơ hội nghề nghiệp"
+        ]
+      }
+    };
+
+    // Helper: copy structured JSON to clipboard
+    function copyData() {
+      navigator.clipboard.writeText(JSON.stringify(vpcData, null, 2))
+        .then(()=> alert('Đã sao chép JSON dữ liệu VPC vào clipboard.'))
+        .catch(()=> alert('Không thể sao chép — kiểm tra quyền clipboard.'));
+    }
+
+    // Add small keyboard shortcut: Ctrl+Shift+C để copy JSON
+    document.addEventListener('keydown', (e)=>{
+      if(e.ctrlKey && e.shiftKey && e.code === 'KeyC') copyData();
+    });
+  </script>
 </body>
 </html>
